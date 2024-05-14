@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma Educativa Interactiva</title>
+    <title>Plataforma Educativa Interactiva - Contacto</title>
     <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
     <header>
@@ -20,8 +19,61 @@
             </ul>
         </nav>
     </header>
-    <footer>
-        <p>Derechos de autor © 2024 Plataforma Educativa Interactiva. Todos los derechos reservados.</p>
-    </footer>
+    
+    <div class="container widget">
+        <div class="discussionForm">  
+            <form id="Formulario" action="/contacto/" method="post" enctype="multipart/form-data">
+                <fieldset class="clearfix">
+                    <div class="input">
+                        <label for="nombre">Nombre *</label>
+                        <input id="nombre" type="text" name="form_text" required maxlength="255" placeholder="Escribe tu nombre">
+                    </div>
+                    <div class="input">
+                        <label for="email">E-mail *</label>
+                        <input id="email" type="email" name="form_email" required maxlength="255" placeholder="nombre@ejemplo.com">
+                    </div>
+                    <div class="input">
+                        <label for="asunto">Asunto *</label>
+                        <input id="asunto" type="text" name="form_text1" required maxlength="255" placeholder="Escribe el asunto">
+                    </div>
+                    <div class="input">
+                        <label for="mensaje">Mensaje *</label>
+                        <textarea id="mensaje" rows="10" cols="40" name="form_textarea" required placeholder="Escribe tu mensaje"></textarea>
+                    </div>
+                    <div class="input">
+                        <label for="imagen">Imagen *</label>
+                        <input type="file" id="imagen" name="form_imagen" accept="image/*" required>
+                        <img id="previewImagen" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 100%; max-height: 200px;">
+                    </div>
+                    <div class="btn">
+                        <input type="submit" class="submit" value="Enviar">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('imagen').addEventListener('change', function(event) {
+            var imagenInput = event.target;
+            var imagen = imagenInput.files[0];
+            var imagenType = imagen.type.split('/')[0];
+
+            if (imagenType !== 'image') {
+                alert('Por favor, selecciona un archivo de imagen.');
+                imagenInput.value = '';
+                return;
+            }
+    
+            var previewImagen = document.getElementById('previewImagen');
+            previewImagen.style.display = 'block';
+
+            var lector = new FileReader();
+            lector.onload = function(e) {
+                previewImagen.src = e.target.result;
+            };
+            lector.readAsDataURL(imagen);
+        });
+    </script>
 </body>
 </html>
