@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="background-image"></div>
     <header>
         <h1>Plataforma Educativa Interactiva</h1>
         <nav>
@@ -41,7 +42,6 @@
                         <textarea id="mensaje" rows="10" cols="40" name="form_textarea" required placeholder="Escribe tu mensaje"></textarea>
                     </div>
 
-                    <!-- Campo de selección de tipo de archivo -->
                     <div class="input">
                         <label>Tipo de Archivo *</label>
                         <select id="tipoArchivo" name="tipo_archivo" required>
@@ -50,22 +50,20 @@
                         </select>
                     </div>
 
-                    <!-- Campo de carga de imagen -->
                     <div class="input" id="inputImagen">
                         <label>Imagen *</label>
+                        <label for="imagen" class="custom-file-upload">Seleccionar imagen</label>
                         <input type="file" id="imagen" name="form_imagen" accept="image/*" required>
                         <img id="previewImagen" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 100%; max-height: 200px;">
                     </div>
-
-                    <!-- Campo de carga de documento -->
+                    
                     <div class="input" id="inputDocumento" style="display: none;">
                         <label>Documento *</label>
+                        <label for="documento" class="custom-file-upload">Seleccionar documento</label>
                         <input type="file" id="documento" name="form_documento" accept=".pdf,.doc,.docx" required>
                     </div>
                     
-                    <div class="btn">
-                        <input type="submit" class="submit" value="Enviar">
-                    </div>
+                    <div class="btn">Enviar</div>
                 </fieldset>
             </form>
         </div>
@@ -76,7 +74,7 @@
             var tipoSeleccionado = event.target.value;
             var inputImagen = document.getElementById('inputImagen');
             var inputDocumento = document.getElementById('inputDocumento');
-
+    
             if (tipoSeleccionado === 'imagen') {
                 inputImagen.style.display = 'block';
                 inputDocumento.style.display = 'none';
@@ -85,12 +83,12 @@
                 inputImagen.style.display = 'none';
             }
         });
-
+    
         document.getElementById('imagen').addEventListener('change', function(event) {
             var imagenInput = event.target;
             var imagen = imagenInput.files[0];
             var imagenType = imagen.type.split('/')[0];
-
+    
             if (imagenType !== 'image') {
                 alert('Por favor, selecciona un archivo de imagen.');
                 imagenInput.value = '';
@@ -99,14 +97,29 @@
     
             var previewImagen = document.getElementById('previewImagen');
             previewImagen.style.display = 'block';
-
+    
             var lector = new FileReader();
             lector.onload = function(e) {
                 previewImagen.src = e.target.result;
             };
             lector.readAsDataURL(imagen);
         });
+    
+        document.getElementById('documento').addEventListener('change', function(event) {
+            var documentoInput = event.target;
+            var documento = documentoInput.files[0];
+            var documentoType = documento.type.split('/')[0];
+    
+            if (documentoType !== 'application/pdf' && documentoType !== 'application/msword' && documentoType !== 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+                alert('Por favor, selecciona un archivo de documento válido (PDF, DOC o DOCX).');
+                documentoInput.value = '';
+                return;
+            }
+        });
     </script>
 
+    <footer>
+        <p>Derechos de autor © 2024 Plataforma Educativa Interactiva. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
