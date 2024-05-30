@@ -290,30 +290,62 @@ footer {
     box-sizing: border-box;
 }
 
-
 /* Estilos específicos para Actividades.html */
-.activity-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.center-title {
+    text-align: center;
+    margin: 20px 0;
 }
 
-.activity {
-    margin: 20px;
+.activity-section {
+    margin: 20px auto;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.column-left, .column-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.column-left {
+    margin-right: 20px;
+}
+
+.container {
     padding: 20px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
     background-color: white;
     box-shadow: 0 0 10px rgba(46, 151, 5, 0.8);
     border-radius: 10px;
-    max-width: 300px;
-    text-align: center;
 }
 
-.activity h2 {
-    margin-top: 0;
+.container iframe {
+    width: auto;
+    height: 200px;
+    border: none;
 }
 
-.activity p {
-    margin: 10px 0;
+.additional-container .containeres iframe{
+    height: 600px;
+    width: 1000px;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(46, 151, 5, 0.8);
+    border-radius: 10px;
+    margin: auto;
+    display: block;
+}
+
+.example-iframes {
+    display: none;
+}
+
+.container iframe[src="https://www.tablasdemultiplicar.com/contrarreloj/"] {
+    height: calc(600px + 40px);
 }
 
 /* Estilos específicos para AcercaDeNosotros.html */
@@ -359,8 +391,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px auto; /* Cambiado desde 'padding: 20px' */
-    max-width: 800px; /* Ajusta el ancho máximo según sea necesario */
+    margin: 40px auto;
+    max-width: 800px;
 }
 
 .widget {
