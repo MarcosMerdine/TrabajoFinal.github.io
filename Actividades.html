@@ -28,7 +28,8 @@
         <h1>Información de Libros</h1>
         <input type="text" id="book-search-input" placeholder="Ingresa el título del libro">
         <button onclick="searchBooks()">Buscar</button>
-        <h6>>>> NO SON PARA DESCARGAR <<<</h6>
+        <button class="clear-button" onclick="clearResults()">Limpiar Resultados</button>
+        <h6> >>> NO SON PARA DESCARGAR <<< </h6>
         <div id="book-results"></div>
     </div>
     <script src="libros.js"></script>
@@ -63,5 +64,12 @@
     <footer>
         <p>Derechos de autor © 2024 Plataforma Educativa Interactiva. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        function clearResults() {
+            var bookResultsDiv = document.getElementById('book-results');
+            bookResultsDiv.innerHTML = '';
+        }
+    </script>
 </body>
 </html>
