@@ -20,6 +20,18 @@
             </ul>
         </nav>
     </header>
+    <div class="weather-container">
+        <p id="weather-info">Cargando temperatura...</p>
+    </div>
+    <script src="weather.js"></script>
+    <div class="book-search-section">
+        <h1>Información de Libros</h1>
+        <input type="text" id="book-search-input" placeholder="Ingresa el título del libro">
+        <button onclick="searchBooks()">Buscar</button>
+        <h6>>>> NO SON PARA DESCARGAR <<<</h6>
+        <div id="book-results"></div>
+    </div>
+    <script src="libros.js"></script>
     <h1 class="center-title">Juegos interactivos</h1>
     <div class="activity-section">
         <!-- Columna Izquierda -->
@@ -47,6 +59,7 @@
             <iframe src="https://www.cokitos.com/jugar-fruit-ninja-online/play/" width="100%" height="300" frameborder="0"></iframe>
         </div>
     </div>
+    
     <footer>
         <p>Derechos de autor © 2024 Plataforma Educativa Interactiva. Todos los derechos reservados.</p>
     </footer>
