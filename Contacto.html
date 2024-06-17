@@ -43,23 +43,24 @@
                     </div>
 
                     <div class="input">
-                        <label>Tipo de Archivo *</label>
+                        <label>Tipo de Archivo del Documento de Identidad*</label>
                         <select id="tipoArchivo" name="tipo_archivo" required>
                             <option value="imagen">Imagen</option>
                             <option value="documento">Documento</option>
                         </select>
+                        <h6> >>> IMPORTANTE PARA VALIDAR IDENTIDAD <<< </h6>
                     </div>
 
                     <div class="input" id="inputImagen">
-                        <label>Imagen *</label>
+                        <label>Imagen</label>
                         <!--<label for="imagen" class="custom-file-upload">Seleccionar imagen</label>-->
                         <input type="file" id="imagen" name="form_imagen" accept="image/*" required>
                         <img id="previewImagen" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 100%; max-height: 200px;">
                     </div>
 
                     <div class="input" id="inputDocumento" style="display: none;">
-                        <label>Documento *</label>
-                        <label for="documento" class="custom-file-upload">Seleccionar documento</label>
+                        <label>Documento</label>
+                        <!--<label for="documento" class="custom-file-upload">Seleccionar documento</label>-->
                         <input type="file" id="documento" name="form_documento" accept=".pdf,.doc,.docx" required>
                     </div>
 
@@ -108,9 +109,9 @@
         document.getElementById('documento').addEventListener('change', function(event) {
             var documentoInput = event.target;
             var documento = documentoInput.files[0];
-            var documentoType = documento.type.split('/')[0];
+            var extension = documento.name.split('.').pop().toLowerCase();
 
-            if (documentoType !== 'application/pdf' && documentoType !== 'application/msword' && documentoType !== 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+            if (!['pdf', 'doc', 'docx'].includes(extension)) {
                 alert('Por favor, selecciona un archivo de documento válido (PDF, DOC o DOCX).');
                 documentoInput.value = '';
                 return;
@@ -123,10 +124,13 @@
             var asunto = document.getElementById('asunto').value;
             var mensaje = document.getElementById('mensaje').value;
             var tipoArchivo = document.getElementById('tipoArchivo').value;
+            if (nombre === '' || email === '' || asunto === '' || mensaje === '') {
+                alert('Por favor, completa todos los campos requeridos.');
+                return;
+            }
 
             var body = `Nombre: ${nombre}\nE-mail: ${email}\nAsunto: ${asunto}\nMensaje: ${mensaje}\nTipo de Archivo: ${tipoArchivo}`;
             var mailtoLink = `mailto:marchangomer@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(body)}`;
-
             window.location.href = mailtoLink;
         });
     </script>
