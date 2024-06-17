@@ -154,9 +154,8 @@ footer {
     margin-top: auto;
     bottom: 0;
 }
-
-/* Estilos para tablets */
-@media (max-width: 1024px) {
+/* Estilo para tablets */
+@media (max-width: 1024px) and (min-width: 850px) {
     body {
         background-color: #e0f7fa;
     }
@@ -179,7 +178,7 @@ footer {
 }
 
 /* Estilos para celulares */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     body {
         background-color: #ffe0b2;
     }
@@ -204,9 +203,9 @@ footer {
         display: block;
         margin: 10px 0;
     }
-
-    .images-container a, .images-container2 a {
-        flex: 0 0 calc(50% - 20px);
+    .courses-section2 {
+        min-height:auto;
+        width: 700px
     }
 }
 
@@ -290,6 +289,17 @@ footer {
     box-sizing: border-box;
 }
 
+.favorite {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.star {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
 /* Estilos específicos para Actividades.html */
 .center-title {
     text-align: center;
@@ -346,6 +356,66 @@ footer {
 
 .container iframe[src="https://www.tablasdemultiplicar.com/contrarreloj/"] {
     height: calc(600px + 40px);
+}
+
+.weather-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(46, 151, 5, 0.8);
+}
+
+.weather-container p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.book-search-section {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(46, 151, 5, 0.8);
+}
+
+.book-search-section input, .book-search-section button {
+    display: inline-block;
+    background: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+#book-results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.book {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    max-width: 200px;
+    text-align: justify;
+}
+
+.book img {
+    max-width: 100%;
+    border-radius: 5px;
 }
 
 /* Estilos específicos para AcercaDeNosotros.html */
