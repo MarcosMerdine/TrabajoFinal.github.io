@@ -130,7 +130,7 @@ main {
 /* Botones */
 button.btn, .btn, .btn-img {
     display: inline-block;
-    background: #007BFF;
+    background: rgba(46, 151, 5, 0.8);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -142,7 +142,7 @@ button.btn, .btn, .btn-img {
 }
 
 button.btn:hover, .btn:hover, .btn-img:hover {
-    background: #0056b3;
+    background: #002246;
 }
 
 footer {
@@ -384,7 +384,20 @@ footer {
     box-shadow: 0 0 10px rgba(46, 151, 5, 0.8);
 }
 
-.book-search-section input, .book-search-section button {
+.book-search-section input {
+    display: inline-block;
+    background: white;
+    color: rgb(155, 155, 155);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.book-search-section button {
     display: inline-block;
     background: #007BFF;
     color: white;
@@ -457,7 +470,7 @@ footer {
     height: 100%;
 }
 
-/* Estilos específicos para Contacto.html */
+/* Estilos específicos para Contacto.html y usuarios.html*/
 .container {
     display: flex;
     justify-content: center;
