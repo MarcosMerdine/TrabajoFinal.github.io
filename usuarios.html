@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Educativa Interactiva ABC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="imagenes/fondo.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="background-image"></div>
+    <header>
+        <h1>Plataforma Educativa Interactiva ABC</h1>
+        <a href="usuarios.html" class="btn">Unirse ahora</a>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Inicio</a></li>
+                <li><a href="Cursos.html">Cursos</a></li>
+                <li><a href="Actividades.html">Actividades</a></li>
+                <li><a href="AcercaDeNosotros.html">Acerca de Nosotros</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container widget">
+        <div class="discussionForm">  
+            <form id="FormularioBasico" method="post" enctype="multipart/form-data" action="/add_usuario">
+                <fieldset class="clearfix">
+                    <div class="input">
+                        <label for="nombre">Nombre *</label>
+                        <input id="nombre" type="text" name="nombre" required maxlength="255" placeholder="Escribe tu nombre">
+                    </div>
+                    <div class="input">
+                        <label for="documento">Documento *</label>
+                        <input id="documento" type="text" name="documento" required maxlength="255" placeholder="Escribe tu documento">
+                    </div>
+                    <button type="submit" id="sendBtnBasico" class="btn">Registrarse</button>
+                </fieldset>
+            </form>
+
+            <!-- Formulario Completo Oculto -->
+            <form id="FormularioCompleto" method="post" enctype="multipart/form-data" action="/add_usuario_full" style="display:none;">
+                <fieldset class="clearfix">
+                    <input type="hidden" id="nombreCompleto" name="nombre">
+                    <input type="hidden" id="documentoCompleto" name="documento">
+                    <div class="input">
+                        <label for="fecha_nacimiento">Fecha de nacimiento *</label>
+                        <input id="fecha_nacimiento" type="text" name="fecha_nacimiento" required maxlength="255" placeholder="Escribe tu fecha de nacimiento">
+                    </div>
+                    <div class="input">
+                        <label for="localidad">Localidad *</label>
+                        <input id="localidad" type="text" name="localidad" required maxlength="255" placeholder="Escribe tu localidad">
+                    </div>
+                    <div class="input">
+                        <label for="email">E-mail *</label>
+                        <input id="email" type="email" name="email" required maxlength="255" placeholder="nombre@ejemplo.com">
+                    </div>
+                    <div class="input">
+                        <label for="cursos">Cursos de interés *</label>
+                        <textarea id="cursos" rows="10" cols="40" name="cursos" required placeholder="Escribe los cursos"></textarea>
+                    </div>
+                    <button type="submit" id="sendBtnCompleto" class="btn">Registrar Información Completa</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('FormularioBasico').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+            fetch(this.action, {
+                method: 'POST',
+                body: JSON.stringify(Object.fromEntries(formData)),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => response.json()).then(data => {
+                if (data.success) {
+                    document.getElementById('FormularioBasico').style.display = 'none';
+                    document.getElementById('FormularioCompleto').style.display = 'block';
+                    document.getElementById('nombreCompleto').value = formData.get('nombre');
+                    document.getElementById('documentoCompleto').value = formData.get('documento');
+                }
+            }).catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
